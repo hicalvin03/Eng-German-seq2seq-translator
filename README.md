@@ -3,4 +3,9 @@ Create an Eng-German BILSTM model that uses Bahadanu attention. (Learning Projec
 
 Model will serve as a nice benchmark to a future transformer translator or fine Tuning a pretrained transformer.
 
+**Model Architecture/details:**
+
+- Dataset: WMT14 from HuggingFace
+- Tokeniser (BPE)
+
 
