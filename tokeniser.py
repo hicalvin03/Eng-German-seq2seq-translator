@@ -36,7 +36,7 @@ def tokenise_batch(batch):
     
     targets = [i["de"] for i in batch_text]
     
-    return tokeniser(inputs, text_target=targets, truncation=True) # truncation does padding for dataloader to use later
+    return tokeniser(inputs, text_target=targets, truncation=True) # truncation cuts text that is longer then a certain maximum. 
 
 
 dataset = dataset.map(tokenise_batch,batched=True,remove_columns= "translation") # Map over batches and remove translation column so we get {inputids, attention_mask, label}
