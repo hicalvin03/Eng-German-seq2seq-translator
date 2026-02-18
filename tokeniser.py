@@ -46,8 +46,9 @@ tokeniser = PreTrainedTokenizerFast.from_pretrained("./trained_tokeniser") # wra
 
 def tokenise_batch(batch):
     batch_text = batch["translation"]
-    inputs  = [i["en"] for i in batch_text]
-    targets = [i["de"] for i in batch_text]
+
+    inputs  = [f"<s>{i["en"]}</s>" for i in batch_text]
+    targets = [f"{i['de']}</s>" for i in batch_text]
     return tokeniser(inputs, text_target=targets, truncation=True,max_length= 128) # enforce shorter sentences since bilstm has small context window
 
 dataset = dataset.map(tokenise_batch, batched=True, remove_columns="translation")
