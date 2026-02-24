@@ -26,7 +26,7 @@ if not os.path.exists("./trained_tokeniser"):
 
     untrained_tokeniser.train_from_iterator(
         get_training_corpus(), 
-        vocab_size = 32000,
+        vocab_size = 16000,
         special_tokens=special_tokens
         )
     
@@ -49,7 +49,7 @@ def tokenise_batch(batch):
 
     inputs  = [f"<s>{i["en"]}</s>" for i in batch_text]
     targets = [f"{i['de']}</s>" for i in batch_text]
-    return tokeniser(inputs, text_target=targets, truncation=True,max_length= 128) # enforce shorter sentences since bilstm has small context window
+    return tokeniser(inputs, text_target=targets, truncation=True,max_length= 40) # enforce shorter sentences since bilstm has small context window
 
 dataset = dataset.map(tokenise_batch, batched=True, remove_columns="translation")
 dataset.save_to_disk("./tokenised_wmt14")
