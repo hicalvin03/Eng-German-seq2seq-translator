@@ -12,8 +12,12 @@ Model will serve as a nice benchmark to a future transformer translator or fine 
 - hidden_size: 256
 - For more details on hyperparams check config.py
 
-** Training Details:**
-- Used
+**Training Details:**
+- Base lr = 3e-4
+- Used 1% warmup + cosine annealing scheduling
+- adam optimiser
+- Used dropout 0.3 and label smoothing 0.1
+- Always used teacher forcing
 
 **Testing**
 - Training/val loss CrossEntropyLoss
@@ -22,6 +26,17 @@ Model will serve as a nice benchmark to a future transformer translator or fine 
 **Perfomance:**
 - Final BLEU: 14.01
 - Final crossentropy val loss: 3.6
+- Note I suspect low BLEU is due to computational limits as hidden_size and embedding_dim were very small.
+<img width="399" height="385" alt="image" src="https://github.com/user-attachments/assets/1cfdc75a-f936-4b0a-bcf5-8959342bc13b" />
+
+**Attention:**
+- Observing Attention heatmaps the attention effectively learnt to prioritise the same index token of the encoder for context.
+<img width="352" height="346" alt="image" src="https://github.com/user-attachments/assets/b804098e-d12e-4389-a977-aee1abfa4b0f" />
+
+
+Future improvements:
+- Implement scheduled sampling as my model was trained with teacher forcing always.
+
 
 
 
