@@ -1,4 +1,8 @@
 venv/
 cleaned_wmt14/
-Trained_Tokeniser/
+models/
+runs/
+trained_tokeniser/
 tokenised_wmt14/
+test.py
+__pycache__
