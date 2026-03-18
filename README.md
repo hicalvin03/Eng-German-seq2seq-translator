@@ -19,7 +19,6 @@ Model will serve as a nice benchmark to a future transformer translator or fine 
 - Used dropout 0.3 and label smoothing 0.1
 - Always used teacher forcing
 
-Lr diagram:
 <img width="249" height="251" alt="image" src="https://github.com/user-attachments/assets/a8175139-e26f-4edd-87e2-cd2528b1047b" />
 
 **Testing**
